@@ -40,6 +40,18 @@ const todos = [
     title: 'Turn is an incredibly long title used to check and see if your code can handle a very long title on one of your todo items this is just a test ask tumpus he will tell you that this is a test haha here it goes',
     description: 'lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha ',
     completed: true
+  },
+  {
+    id: 8,
+    title: 'Turn into beeping bingus',
+    description: 'This is required for the transformation to complete',
+    completed: true
+  },
+  {
+    id: 9,
+    title: 'Turn is an incredibly long title used to check and see if your code can handle',
+    description: 'lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha ',
+    completed: false
   }
 ]
 
@@ -49,7 +61,7 @@ todos.forEach(function (todo) {
 })
 
 function createToDoCard(todo) {
-  let newToDoCard = $('<div></div>').addClass('todo-card col-md-5');
+  let newToDoCard = $('<div></div>').addClass('row todo-card col-md-5');
   // <div class='col-md-1 col-md-1 col-md-1'></div>
 
   let toDoTitle = $('<h3></h3>').addClass('to-do-title').text(todo.title);
@@ -89,6 +101,6 @@ function createToDoCard(todo) {
 
   });
 
-  $('.each-card').append(newToDoCard);
+  $('.cards-c').append(newToDoCard);
 }
 

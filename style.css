@@ -44,6 +44,7 @@ i::before{
 
 .top {
   padding: 2%;
+  margin: 0;
   background-color:  #FFDC19;
 }
 
@@ -103,6 +104,7 @@ i::before{
 .type-field-c {
   display: flex;
   flex-wrap: wrap;
+  margin: 0;
 }
 
 .cards-c {
@@ -111,6 +113,8 @@ i::before{
   overflow: scroll;
   margin-top: 4%;
   margin-bottom: 4%;
+  /* margin-left: 10%;
+  margin-right: 10%; */
 }
 
 .type-header {
@@ -129,22 +133,23 @@ i::before{
   align-items: center;
 } */
 
-.create {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1rem;
-  color: #fff;
-  background-color: royalblue;
-  /* width: 100%; */
-  border: 1px solid #fff;
-  border-radius: 0.3em;
-  /* background-color: rgb(255, 255, 255, 0); */
-  padding: 2% 3%;
-  text-align: center;
-  /* float: right; */
-}
 
+@media only screen and (max-width: 560px) {
+
+  .top {
+    margin: 3% 0;
+  }
+
+
+
+}
 @media only screen and (min-width: 560px) {
-.todo-card {
-  width: 37vw;
+
+  .top {
+    margin: 0 10%;
+  }
+
+  .type-field-c {
+    margin: 0 10%;
   }
 }

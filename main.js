@@ -1,5 +1,3 @@
-// const $ = require('jquery');
-
 const todos = [
   {
     id: 1,
@@ -24,10 +22,23 @@ const todos = [
     title: 'Take nap',
     description: 'I am sleepy and need to take a nap',
     completed: false
-  }, {
+  },
+  {
     id: 5,
     title: 'Pet my cat',
     description: 'My cat is in need of physical affection',
+    completed: true
+  },
+  {
+    id: 6,
+    title: 'Turn into beeping bingus',
+    description: 'This is required for the transformation to complete',
+    completed: true
+  },
+  {
+    id: 7,
+    title: 'Turn is an incredibly long title used to check and see if your code can handle a very long title on one of your todo items this is just a test ask tumpus he will tell you that this is a test haha here it goes',
+    description: 'lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha ',
     completed: true
   }
 ]
@@ -38,31 +49,46 @@ todos.forEach(function (todo) {
 })
 
 function createToDoCard(todo) {
-  let newToDoCard = $('<div></div>').addClass('todo-card');
-  // let newToDoCard = document.createElement("div");
-  // newToDoCard.classList.add('todo-card');
+  let newToDoCard = $('<div></div>').addClass('todo-card col-md-5');
+  // <div class='col-md-1 col-md-1 col-md-1'></div>
 
   let toDoTitle = $('<h3></h3>').addClass('to-do-title').text(todo.title);
   newToDoCard.append(toDoTitle);
-  // let toDoTitle = document.createElement("h3");
-  // toDoTitle.innerText = todo.title;
-  // toDoTitle.classList.add('to-do-title')
-  // newToDoCard.appendChild(toDoTitle);
 
   let toDoBody = $('<p></p>').addClass('to-do-body').text(todo.description);
   newToDoCard.append(toDoBody);
-  // let toDoBody = document.createElement("p");
-  // toDoBody.classList.add('to-do-body');
-  // toDoBody.innerText = todo.description;
-  // newToDoCard.appendChild(toDoBody);
 
-  // let check = document.createElement("i");
-  // check.classList.add('fas');
-  // check.classList.add('fa-check');
-  // newToDoCard.appendChild(check);
+  let trash = $('<i></i>').addClass('fas fa-trash-alt');
+  newToDoCard.append(trash)
 
   let check = $('<i></i>').addClass('fas fa-check');
   newToDoCard.append(check)
 
+  if (todo.completed === true) {
+    check.css('color', 'rgba(0, 0, 0, 0.3)');
+    toDoTitle.css('color', 'rgba(0, 0, 0, 0.3)');
+    toDoBody.css('color', 'rgba(0, 0, 0, 0.3)');
+  }
+
+
+  check.click(function () {
+
+    if ($(this).css('color') == 'rgba(0, 0, 0, 0.3)') {
+
+      $(this).delay(800).css('color', 'black');
+      toDoTitle.delay(800).css('color', 'black');
+      toDoBody.delay(800).css('color', 'black');
+
+      return;
+    }
+
+    $(this).delay(800).css('color', 'rgba(0, 0, 0, 0.3)');
+    toDoTitle.delay(800).css('color', 'rgba(0, 0, 0, 0.3)');
+    toDoBody.delay(800).css('color', 'rgba(0, 0, 0, 0.3)');
+
+
+  });
+
   $('.each-card').append(newToDoCard);
 }
+

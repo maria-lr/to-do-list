@@ -1,64 +1,89 @@
-const todos = [
-  {
-    id: 1,
-    title: 'Buy Milk',
-    description: 'I need to buy milk from the store',
-    completed: false
-  },
-  {
-    id: 2,
-    title: 'Buy Eggs',
-    description: 'I need to buy eggs from the store',
-    completed: false
-  },
-  {
-    id: 3,
-    title: 'Learn to backflip',
-    description: 'I need to practice my backflip for the backflip competition',
-    completed: true
-  },
-  {
-    id: 4,
-    title: 'Take nap',
-    description: 'I am sleepy and need to take a nap',
-    completed: false
-  },
-  {
-    id: 5,
-    title: 'Pet my cat',
-    description: 'My cat is in need of physical affection',
-    completed: true
-  },
-  {
-    id: 6,
-    title: 'Turn into beeping bingus',
-    description: 'This is required for the transformation to complete',
-    completed: true
-  },
-  {
-    id: 7,
-    title: 'Turn is an incredibly long title used to check and see if your code can handle a very long title on one of your todo items this is just a test ask tumpus he will tell you that this is a test haha here it goes',
-    description: 'lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha ',
-    completed: true
-  },
-  {
-    id: 8,
-    title: 'Turn into beeping bingus',
-    description: 'This is required for the transformation to complete',
-    completed: true
-  },
-  {
-    id: 9,
-    title: 'Turn is an incredibly long title used to check and see if your code can handle',
-    description: 'lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha ',
-    completed: false
-  }
+let todos = [
+  // {
+  //   id: 1,
+  //   title: 'Buy Milk',
+  //   description: 'I need to buy milk from the store',
+  //   completed: false
+  // },
+  // {
+  //   id: 2,
+  //   title: 'Buy Eggs',
+  //   description: 'I need to buy eggs from the store',
+  //   completed: false
+  // },
+  // {
+  //   id: 3,
+  //   title: 'Learn to backflip',
+  //   description: 'I need to practice my backflip for the backflip competition',
+  //   completed: true
+  // },
+  // {
+  //   id: 4,
+  //   title: 'Take nap',
+  //   description: 'I am sleepy and need to take a nap',
+  //   completed: false
+  // },
+  // {
+  //   id: 5,
+  //   title: 'Pet my cat',
+  //   description: 'My cat is in need of physical affection',
+  //   completed: true
+  // },
+  // {
+  //   id: 6,
+  //   title: 'Turn into beeping bingus',
+  //   description: 'This is required for the transformation to complete',
+  //   completed: true
+  // },
+  // {
+  //   id: 7,
+  //   title: 'Turn is an incredibly long title used to check and see if your code can handle a very long title on one of your todo items this is just a test ask tumpus he will tell you that this is a test haha here it goes',
+  //   description: 'lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha ',
+  //   completed: true
+  // },
+  // {
+  //   id: 8,
+  //   title: 'Turn into beeping bingus',
+  //   description: 'This is required for the transformation to complete',
+  //   completed: true
+  // },
+  // {
+  //   id: 9,
+  //   title: 'Turn is an incredibly long title used to check and see if your code can handle',
+  //   description: 'lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha ',
+  //   completed: false
+  // }
 ]
 
-todos.forEach(function (todo) {
-  console.log('I ran')
-  createToDoCard(todo);
-})
+const localStorage = window.localStorage;
+// localStorage.clear();
+const storedTodos = localStorage.getItem('localTodos');
+console.log('stored', storedTodos)
+function todosInLocal() {
+
+  // check if local storage has to do data
+  // if the local todos array is anything but true, do nothing (start with an empty to do list)
+  if (!storedTodos) {
+    return;
+  } else {
+    const parsedData = JSON.parse(storedTodos)
+    // grab data from local storage and inject into todos array 
+    todos = parsedData
+    console.log('parsed data', parsedData)
+    todos.forEach(function (todo) {
+      // console.log('I ran')
+      createToDoCard(todo);
+    })
+  }
+}
+
+todosInLocal();
+
+function replaceToDos() {
+  // replace the local storage with the current todo array
+
+  localStorage.setItem('localTodos', JSON.stringify(todos));
+}
 
 function createToDoCard(todo) {
   let newToDoCard = $('<div></div>').addClass('row todo-card col-md-5');
@@ -98,9 +123,88 @@ function createToDoCard(todo) {
     toDoTitle.delay(800).css('color', 'rgba(0, 0, 0, 0.3)');
     toDoBody.delay(800).css('color', 'rgba(0, 0, 0, 0.3)');
 
-
+    replaceToDos();
   });
 
   $('.cards-c').append(newToDoCard);
+  replaceToDos();
+
+  trash.click(function () {
+    // if the trashcan is clicked, select/make active the div element that contains it(in the DOM)
+    // $(this).parent().click();
+    // $('.todo-card').active().remove();
+
+    // const selectedObject = 
+    // todoObject.deleted = true;
+    // console.log(todoObject.deleted)
+
+
+    // let removeItem = 
+
+    //   todos = $.grep(todos, function (value) {
+    //     return value != removeItem;
+    //   });
+    // $( ".todo-card" ).focus();
+    // $('.todo-card').
+
+
+
+    // $(':focus').parent().remove();
+    // $(this).delay(800).fadeOut(300);
+    // toDoTitle.delay(800).fadeOut(300);
+    // toDoBody.delay(800).fadeOut(300);
+    // check.delay(800).fadeOut(400);
+
+    // console.log('parent', $(this).parent())
+
+    $(this).parent().empty();
+
+
+    replaceToDos();
+
+    // $('.cards-c').remove();
+  })
 }
+
+$('.add').click(function () {
+
+  // take all the items of the new todo and place them in the corresponding items of the card todos
+
+  // link the new fields to the todo objects
+
+  // create a new object with the new info that was typed into the "add a to do" fields. generate an id using the array length and make the default completed status false. grab the title and description from the corresponding fields in the html doc.
+  let todoObject = {
+    id: todos.length + 1,
+    title: $('#type-field-title').val(),
+    description: $('#type-field-body').val(),
+    completed: false,
+    deleted: false,
+  };
+  // console.log('deleted?', todoObject.deleted)
+  // add id class 
+  // $('<div></div>').addClass('card' + todoObject.id);
+
+  // append the new to do object to the end of the todos array
+  todos.push(todoObject)
+
+  // run the replace function for local storage
+  replaceToDos();
+
+
+  // create a todo card for that new to do
+  createToDoCard(todoObject);
+
+  document.getElementById('type-field-title').value = ''
+  document.getElementById('type-field-body').value = ''
+  // console.log(localStorage);
+});
+
+console.log(todos);
+
+
+$()
+
+// function grabObject(x) {
+//   $(todos).remove(x)
+// }
 

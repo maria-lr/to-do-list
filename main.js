@@ -1,58 +1,5 @@
 let todos = [
-  // {
-  //   id: 1,
-  //   title: 'Buy Milk',
-  //   description: 'I need to buy milk from the store',
-  //   completed: false
-  // },
-  // {
-  //   id: 2,
-  //   title: 'Buy Eggs',
-  //   description: 'I need to buy eggs from the store',
-  //   completed: false
-  // },
-  // {
-  //   id: 3,
-  //   title: 'Learn to backflip',
-  //   description: 'I need to practice my backflip for the backflip competition',
-  //   completed: true
-  // },
-  // {
-  //   id: 4,
-  //   title: 'Take nap',
-  //   description: 'I am sleepy and need to take a nap',
-  //   completed: false
-  // },
-  // {
-  //   id: 5,
-  //   title: 'Pet my cat',
-  //   description: 'My cat is in need of physical affection',
-  //   completed: true
-  // },
-  // {
-  //   id: 6,
-  //   title: 'Turn into beeping bingus',
-  //   description: 'This is required for the transformation to complete',
-  //   completed: true
-  // },
-  // {
-  //   id: 7,
-  //   title: 'Turn is an incredibly long title used to check and see if your code can handle a very long title on one of your todo items this is just a test ask tumpus he will tell you that this is a test haha here it goes',
-  //   description: 'lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha ',
-  //   completed: true
-  // },
-  // {
-  //   id: 8,
-  //   title: 'Turn into beeping bingus',
-  //   description: 'This is required for the transformation to complete',
-  //   completed: true
-  // },
-  // {
-  //   id: 9,
-  //   title: 'Turn is an incredibly long title used to check and see if your code can handle',
-  //   description: 'lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha lorem ipsum dol amet test test haha ',
-  //   completed: false
-  // }
+
 ]
 
 const localStorage = window.localStorage;
@@ -156,10 +103,31 @@ function createToDoCard(todo) {
 }
 // $(this).parent().empty();
 
+// Can trigger the search button with the Enter key. Trigger button on enter code from w3Schools:https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp
 
+// Execute a function when the user releases a key on the keyboard
+document.getElementById('type-field-body').addEventListener("keyup", function (event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    $('.add').click();
+    console.log('clicked');
+  }
+});
 
 
 $('.add').click(function () {
+  let title = document.getElementById('type-field-title')
+  let body = document.getElementById('type-field-body')
+
+  const bodyCheck = body.value.replace(/(\r\n|\n|\r)/gm, "");
+  const titleCheck = title.value.replace(/(\r\n|\n|\r)/gm, "");
+
+  if (!titleCheck && !bodyCheck) {
+    return;
+  }
 
   // take all the items of the new todo and place them in the corresponding items of the card todos
 
@@ -187,8 +155,8 @@ $('.add').click(function () {
   // create a todo card for that new to do
   createToDoCard(todoObject);
 
-  document.getElementById('type-field-title').value = ''
-  document.getElementById('type-field-body').value = ''
+  title.value = '';
+  body.value = '';
   // console.log(localStorage);
 });
 

@@ -85,9 +85,10 @@ function replaceToDos() {
   localStorage.setItem('localTodos', JSON.stringify(todos));
 }
 
+
 function createToDoCard(todo) {
-  let newToDoCard = $('<div></div>').addClass('row todo-card col-md-5')
-  // <div class='col-md-1 col-md-1 col-md-1'></div>
+
+  let newToDoCard = $('<div></div>').addClass('row todo-card col-md-5').attr('id', `card-${todo.id}`)
 
   let toDoTitle = $('<h3></h3>').addClass('to-do-title').text(todo.title);
   newToDoCard.append(toDoTitle);
@@ -110,14 +111,17 @@ function createToDoCard(todo) {
   check.click(function (event) {
 
     if ($(this).css('color') == 'rgba(0, 0, 0, 0.3)') {
+      todo.completed = false;
 
       $(this).delay(800).css('color', 'black');
       toDoTitle.delay(800).css('color', 'black');
       toDoBody.delay(800).css('color', 'black');
 
+      replaceToDos();
       return;
-    }
 
+    }
+    todo.completed = true;
     $(this).delay(800).css('color', 'rgba(0, 0, 0, 0.3)');
     toDoTitle.delay(800).css('color', 'rgba(0, 0, 0, 0.3)');
     toDoBody.delay(800).css('color', 'rgba(0, 0, 0, 0.3)');
@@ -136,7 +140,7 @@ function createToDoCard(todo) {
     todo.deleted = true;
 
     if (todo.deleted === true) {
-
+      $(`#card-${todo.id}`).remove();
       // $('.todo-card').fadeOut(400)
     }
 

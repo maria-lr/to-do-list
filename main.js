@@ -86,7 +86,7 @@ function replaceToDos() {
 }
 
 function createToDoCard(todo) {
-  let newToDoCard = $('<div></div>').addClass('row todo-card col-md-5');
+  let newToDoCard = $('<div></div>').addClass('row todo-card col-md-5')
   // <div class='col-md-1 col-md-1 col-md-1'></div>
 
   let toDoTitle = $('<h3></h3>').addClass('to-do-title').text(todo.title);
@@ -107,8 +107,7 @@ function createToDoCard(todo) {
     toDoBody.css('color', 'rgba(0, 0, 0, 0.3)');
   }
 
-
-  check.click(function () {
+  check.click(function (event) {
 
     if ($(this).css('color') == 'rgba(0, 0, 0, 0.3)') {
 
@@ -124,47 +123,37 @@ function createToDoCard(todo) {
     toDoBody.delay(800).css('color', 'rgba(0, 0, 0, 0.3)');
 
     replaceToDos();
+
+
   });
 
   $('.cards-c').append(newToDoCard);
   replaceToDos();
 
-  trash.click(function () {
-    // if the trashcan is clicked, select/make active the div element that contains it(in the DOM)
-    // $(this).parent().click();
-    // $('.todo-card').active().remove();
 
-    // const selectedObject = 
-    // todoObject.deleted = true;
-    // console.log(todoObject.deleted)
+  trash.click(function (event) {
+    // console.log(todo.id);
+    todo.deleted = true;
 
+    if (todo.deleted === true) {
 
-    // let removeItem = 
+      // $('.todo-card').fadeOut(400)
+    }
 
-    //   todos = $.grep(todos, function (value) {
-    //     return value != removeItem;
-    //   });
-    // $( ".todo-card" ).focus();
-    // $('.todo-card').
+    function isNotDeleted(value) {
+      console.log('What is the value variable in my isNotDeleted', value);
+      return (value.deleted === false);
+    }
 
-
-
-    // $(':focus').parent().remove();
-    // $(this).delay(800).fadeOut(300);
-    // toDoTitle.delay(800).fadeOut(300);
-    // toDoBody.delay(800).fadeOut(300);
-    // check.delay(800).fadeOut(400);
-
-    // console.log('parent', $(this).parent())
-
-    $(this).parent().empty();
-
-
+    todos = todos.filter(isNotDeleted);
+    console.log('new array', todos)
     replaceToDos();
-
-    // $('.cards-c').remove();
-  })
+  });
 }
+// $(this).parent().empty();
+
+
+
 
 $('.add').click(function () {
 
@@ -200,11 +189,3 @@ $('.add').click(function () {
 });
 
 console.log(todos);
-
-
-$()
-
-// function grabObject(x) {
-//   $(todos).remove(x)
-// }
-

@@ -37,11 +37,6 @@ i::before{
   background:transparent;
 }
 
-/* .plus {
-  background-color: #FFDC19;
-  font-size: 1.5rem;
-} */
-
 .top {
   padding: 10px;
   border-radius: 1rem;
@@ -62,7 +57,6 @@ i::before{
 .todo-card {
   display: block;
   box-shadow: 0 6px 6px -6px rgba(0, 0, 0, 0.3);
-  /* border-radius: 1rem; */
   margin: 1rem;
   width: 100%;
   padding: .5rem;
@@ -78,23 +72,14 @@ i::before{
   width: 100vw;
   padding-top: 2%;
   padding-left: 4%;
-  /* font-family: 'Nunito', sans-serif; */
   font-weight: 700;
-  /* height: 30vh; */
 }
 
 #type-field-body {
   padding: 2%;
-  /* padding-bottom: 30%; */
   padding-left: 4%;
   width: 100%;
 }
-
-/* .end-space {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
 
 .type-header {
   display: flex;
@@ -116,8 +101,6 @@ i::before{
   overflow: scroll;
   margin-top: 4%;
   margin-bottom: 4%;
-  /* margin-left: 10%;
-  margin-right: 10%; */
 }
 
 .type-header {
@@ -130,11 +113,6 @@ i::before{
   padding-left: 3%;
   width: 100%
 }
-/* .type-header {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-} */
 
 
 @media only screen and (max-width: 560px) {

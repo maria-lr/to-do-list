@@ -15,34 +15,112 @@ h1 {
   margin: 0;
 }
 
-h2 {
+/* h2 {
   font-family: 'Nunito', sans-serif;
   font-size: 1.5rem;
+  font-weight: 700;
+} */
+
+h2 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
   font-weight: 700;
 }
 
 h3 {
   font-family: 'Nunito', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.3);
 }
 
 p {
-  font-family: 'Nunito', sans-serif;
-  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: .85rem;
   font-weight: 400;
+  letter-spacing: .01rem;
 }
 
 i::before{
   background:transparent;
 }
 
-.top {
+/* Code below from: https://medium.com/hackernoon/removing-that-ugly-focus-ring-and-keeping-it-too-6c8727fefcd2 . This, along with the accompanying JS code will allow keyboard-only users to have the ring focus on for buttons. */
+
+body:not(.user-is-tabbing) button:focus,
+body:not(.user-is-tabbing) input:focus,
+body:not(.user-is-tabbing) select:focus,
+body:not(.user-is-tabbing) textarea:focus {
+  outline: none;
+}
+
+/* New */
+
+.page-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100px;
+  background-color: gray;
+}
+
+.page-container {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.add-task-container {
+  margin: auto;
+  /* background-color: blueviolet; */
+  padding: 2%;
+}
+
+.add-task {
+  border-bottom: 1px solid black;
+  padding-bottom: 5px;
+}
+
+.to-do-title{
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 3rem;
+  align-items: center;
+  padding-left: 2rem;
+}
+
+.task-text {
+  width: 80%;
+  display: inline-block;
+}
+
+.type-field-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: .85rem;
+  font-weight: 400;
+  letter-spacing: .01rem;
+}
+
+::placeholder {
+  font-family: 'Roboto', sans-serif;
+  font-size: .85rem;
+  font-weight: 400;
+  /* letter-spacing: .01rem; */
+}
+
+.add-button {
+  background-color: white;
+}
+
+/* End new */
+
+/* .top {
   padding: 10px;
   border-radius: 1rem;
   margin: 0;
   background-color:  #FFDC19;
-}
+} */
 
 .end-space {
   text-align: center;
@@ -56,16 +134,33 @@ i::before{
 
 .todo-card {
   display: block;
-  box-shadow: 0 6px 6px -6px rgba(0, 0, 0, 0.3);
-  margin: 1rem;
+  border-bottom:  rgba(0, 0, 0, 0.3) 1px solid;
+  /* border-right: rgba(0, 0, 0, 0.3) 1px solid; */
+  /* box-shadow: 0 6px 6px -6px rgba(0, 0, 0, 0.3); */
   width: 100%;
-  padding: .5rem;
+  padding: 25px;
 
 }
 
 .fas {
   float: right;
-  padding: 2%;
+  cursor: pointer;
+}
+
+/* .fas:hover {
+  color: green;
+} */
+
+.fa-check {
+  padding-right: 15px;
+}
+
+.fa-check:hover {
+  color: green;
+}
+
+.fa-trash-alt:hover{
+  color: red;
 }
 
 #type-field-title {
@@ -95,12 +190,17 @@ i::before{
 
 .cards-c {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  width: 100vw;
-  height: 60vh;
-  overflow: scroll;
-  margin-top: 4%;
-  margin-bottom: 4%;
+  border:  rgba(0, 0, 0, 0.3) 1px solid;
+  padding: 2%;
+  border-radius: 5px;
+  padding: 0;
+  margin: auto;
+}
+
+.to-do-title {
+  border-radius: 4px 4px 0 0;
 }
 
 .type-header {
@@ -114,28 +214,85 @@ i::before{
   width: 100%
 }
 
-
+/* Mobile */
 @media only screen and (max-width: 560px) {
 
-  .top {
-    margin: 3% 0;
+  .page-container {
+    width: 75%;
   }
 
+  .add-task-container {
+    width: 100%;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
 
+  .add-task {
+    width: 95%;
+  }
+
+  h3 {
+    font-size: 1rem;
+    padding: 4rem;
+    text-align: center;
+  }
+}
+
+/* Tablet */
+@media only screen and (min-width: 560px) and (max-width: 830px) {
+
+  .page-container {
+    width: 75%;
+  }
+
+  .add-task-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .add-task {
+    width: 75%;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    padding: 4rem;
+    text-align: center;
+  }
 
 }
-@media only screen and (min-width: 560px) {
 
-  .top {
-    margin: 0 10%;
+/* Desktop */
+@media only screen and (min-width: 830px) {
+
+  .page-container {
+    width: 75%;
   }
 
-  .type-field-c {
-    margin: 0 10%;
+  .cards-c {
+    width: 75%;
+    max-width: 880px;
   }
 
-  .add {
-    margin-right: 10%;
+  .add-task-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .add-task {
+    width: 500px;
+  }
+  
+  .todo-card {
+    /* display: inline-block; */
+    width: 40%;
+
   }
 
 }

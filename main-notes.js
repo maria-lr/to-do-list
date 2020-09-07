@@ -4,7 +4,6 @@ const storedTodos = localStorage.getItem('localTodos');
 
 // NOTES: Function unnecessary. Should use functions for longer sections of code you'll use again.
 
-console.log("stored todos is...", storedTodos, typeof storedTodos)
 
 // If a user already has todo items from an earlier session,
 // set them locally and generate todo cards
@@ -18,13 +17,35 @@ if (storedTodos) {
     todos.forEach(function (todo, index) {
       // const isEven = (index % 2) == 0;
       createToDoCard(todo /*, isEven*/);
-    })
+    });
+    handleFlexHack(todos.length);
   } else {
     console.log("else fired!!!")
     showEmptyMessage();
   }
 
 }
+
+// Create or remove ghost element when needed to ensure new cards are created on the left and not the center
+function handleFlexHack(length) {
+  const isMobileView = window.innerWidth <= 830;
+
+  // Bail out early and do nothing if in mobile view
+  if (isMobileView) return;
+
+  const shouldCreateGhostCard = (length % 2) === 1;
+
+  if (shouldCreateGhostCard) {
+    const ghostCard = $('<div></div>')
+      .addClass('ghost-card')
+
+    $('.cards-c').append(ghostCard);
+  }
+  else {
+    $('.ghost-card').remove()
+  }
+}
+
 function showEmptyMessage() {
   $('.cards-c').css('height', '70vh').css('justify-content', 'center');
   let taskMessage = $('<h3>Your task cards will appear here.</h3>')
@@ -108,6 +129,9 @@ function createToDoCard(todo /*, hasBorder = false */) {
       return !thisTodo.deleted;
     });
 
+
+    handleFlexHack(todos.length)
+
     if (!todos.length) {
       showEmptyMessage();
     }
@@ -124,6 +148,7 @@ function createToDoCard(todo /*, hasBorder = false */) {
 
   // Append todo card to DOM and update local storage
   $('.cards-c').append(newToDoCard);
+
   return replaceToDos();
 }
 
@@ -147,9 +172,9 @@ $('.add-button').click(function () {
   if (todos.length === 0) {
     $('.task-message').remove();
     $('.cards-c').css('height', '100%')
-      .css('display', 'flex')
-      .css('flexwrap', 'wrap')
-      .css('justify-content', 'flex-start')
+    // .css('display', 'flex')
+    // .css('flexwrap', 'wrap')
+    // .css('justify-content', 'flex-start')
   }
 
   // Grab title and description input values
@@ -188,7 +213,7 @@ $('.add-button').click(function () {
 
   // Create new todo card in DOM
   createToDoCard(todoObject /*, isCardIAmGoingToCreateEven */);
-
+  handleFlexHack(todos.length);
   // Clear title and description input with jquery
   // NOTES: Change to jquery.
   $('.add-task').val('')

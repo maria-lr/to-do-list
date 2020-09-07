@@ -15,12 +15,6 @@ h1 {
   margin: 0;
 }
 
-/* h2 {
-  font-family: 'Nunito', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-} */
-
 h2 {
   font-family: 'Nunito', sans-serif;
   font-size: 1rem;
@@ -54,8 +48,6 @@ body:not(.user-is-tabbing) textarea:focus {
   outline: none;
 }
 
-/* New */
-
 .page-top {
   display: flex;
   align-items: flex-end;
@@ -68,11 +60,14 @@ body:not(.user-is-tabbing) textarea:focus {
   margin: auto;
   display: flex;
   flex-wrap: wrap;
+  width: 75%;
 }
 
 .add-task-container {
-  margin: auto;
-  /* background-color: blueviolet; */
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  /* margin: auto; */
   padding: 2%;
 }
 
@@ -106,24 +101,10 @@ body:not(.user-is-tabbing) textarea:focus {
   font-family: 'Roboto', sans-serif;
   font-size: .85rem;
   font-weight: 400;
-  /* letter-spacing: .01rem; */
 }
 
 .add-button {
   background-color: white;
-}
-
-/* End new */
-
-/* .top {
-  padding: 10px;
-  border-radius: 1rem;
-  margin: 0;
-  background-color:  #FFDC19;
-} */
-
-.end-space {
-  text-align: center;
 }
 
 .add {
@@ -134,22 +115,25 @@ body:not(.user-is-tabbing) textarea:focus {
 
 .todo-card {
   display: block;
-  border-bottom:  rgba(0, 0, 0, 0.3) 1px solid;
+  /* border-bottom:  rgba(0, 0, 0, 0.3) 1px solid; */
   /* border-right: rgba(0, 0, 0, 0.3) 1px solid; */
-  /* box-shadow: 0 6px 6px -6px rgba(0, 0, 0, 0.3); */
+  box-shadow: 0 6px 6px -6px rgba(0, 0, 0, 0.3);
   width: 100%;
   padding: 25px;
 
+}
+
+/* Ghost element used to ensure flexbox center will create cards from the left on new rows */
+.ghost-card {
+  width: 100%;
+  padding: 25px;
+  background-color: grey;
 }
 
 .fas {
   float: right;
   cursor: pointer;
 }
-
-/* .fas:hover {
-  color: green;
-} */
 
 .fa-check {
   padding-right: 15px;
@@ -188,7 +172,7 @@ body:not(.user-is-tabbing) textarea:focus {
   margin: 0;
 }
 
-.cards-c {
+.task-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -197,6 +181,13 @@ body:not(.user-is-tabbing) textarea:focus {
   border-radius: 5px;
   padding: 0;
   margin: auto;
+}
+
+.cards-c {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
 }
 
 .to-do-title {
@@ -217,12 +208,13 @@ body:not(.user-is-tabbing) textarea:focus {
 /* Mobile */
 @media only screen and (max-width: 560px) {
 
-  .page-container {
-    width: 75%;
+  h3 {
+    font-size: 1rem;
+    padding: 4rem;
+    text-align: center;
   }
 
   .add-task-container {
-    width: 100%;
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
   }
@@ -231,31 +223,10 @@ body:not(.user-is-tabbing) textarea:focus {
     width: 95%;
   }
 
-  h3 {
-    font-size: 1rem;
-    padding: 4rem;
-    text-align: center;
-  }
 }
 
 /* Tablet */
 @media only screen and (min-width: 560px) and (max-width: 830px) {
-
-  .page-container {
-    width: 75%;
-  }
-
-  .add-task-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
-  }
-
-  .add-task {
-    width: 75%;
-  }
 
   h3 {
     font-size: 1.2rem;
@@ -263,24 +234,25 @@ body:not(.user-is-tabbing) textarea:focus {
     text-align: center;
   }
 
+  .add-task-container {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .add-task {
+    width: 75%;
+  }
 }
 
 /* Desktop */
 @media only screen and (min-width: 830px) {
 
-  .page-container {
-    width: 75%;
-  }
-
-  .cards-c {
+  .task-container {
     width: 75%;
     max-width: 880px;
   }
 
   .add-task-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
     padding-top: 4rem;
     padding-bottom: 4rem;
   }
@@ -290,9 +262,12 @@ body:not(.user-is-tabbing) textarea:focus {
   }
   
   .todo-card {
-    /* display: inline-block; */
     width: 40%;
 
+  }
+
+  .ghost-card {
+    width: 40%;
   }
 
 }

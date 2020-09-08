@@ -127,7 +127,6 @@ body:not(.user-is-tabbing) textarea:focus {
 .ghost-card {
   width: 100%;
   padding: 25px;
-  background-color: grey;
 }
 
 .fas {

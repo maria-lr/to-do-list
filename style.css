@@ -35,6 +35,10 @@ p {
   letter-spacing: .01rem;
 }
 
+body {
+  margin-bottom: 6%;
+}
+
 i::before{
   background:transparent;
 }
@@ -220,18 +224,36 @@ body:not(.user-is-tabbing) textarea:focus {
   }
 
   .add-task {
-    width: 95%;
+    min-width: 300px;
+    width: 75%;
   }
 
+  .todo-card {
+    padding: 1.5rem;
+  }
+
+  .to-do-title {
+    padding-left: 1.5rem;
+  }
 }
 
-/* Tablet */
-@media only screen and (min-width: 560px) and (max-width: 830px) {
+
+/* Tablet*/
+@media only screen and (min-width: 560px) and (max-width: 900px) {
 
   h3 {
     font-size: 1.2rem;
     padding: 4rem;
     text-align: center;
+  }
+
+  .task-container {
+    width: 75%;
+    max-width: 880px;
+  }
+
+  .to-do-title {
+    padding-left: 1.5rem;
   }
 
   .add-task-container {
@@ -242,19 +264,28 @@ body:not(.user-is-tabbing) textarea:focus {
   .add-task {
     width: 75%;
   }
+
+  .todo-card {
+    padding: 1.5rem;
+    width: 100%;
+  }
 }
 
 /* Desktop */
-@media only screen and (min-width: 830px) {
+@media only screen and (min-width: 900px) {
 
   .task-container {
-    width: 75%;
+    width: 750px;
     max-width: 880px;
   }
 
   .add-task-container {
-    padding-top: 4rem;
+    padding-top: 3rem;
     padding-bottom: 4rem;
+  }
+
+  .to-do-title {
+    padding-left: 3rem;
   }
 
   .add-task {
@@ -263,7 +294,6 @@ body:not(.user-is-tabbing) textarea:focus {
   
   .todo-card {
     width: 40%;
-
   }
 
   .ghost-card {

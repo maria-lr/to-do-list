@@ -100,6 +100,17 @@ function createToDoCard(todo /*, hasBorder = false */) {
       // Update CSS
       $(this).delay(800).css('color', 'black');
       task.delay(800).css('color', 'black');
+      // $(this).hover(function () {
+      //   const isBlack = $(this).css('color') === 'rgb(0, 0, 0)';
+      //   if (!isBlack) {
+      //     console.log('seting black')
+      //     $(this).css('color', '#00a24f');
+      //   } else {
+      //     console.log('setting grey')
+      //     $(this).css('color', '#000');
+      //   }
+
+      // })
 
       // Mark incomplete and update local storage
       todo.completed = false;
@@ -157,7 +168,25 @@ function createToDoCard(todo /*, hasBorder = false */) {
 document.getElementById('type-field-text').addEventListener("keyup", function (event) {
 
   // Number 13 is the "Enter" key on the keyboard
-  if (event.keyCode === 13) {
+
+  if (event.keyCode === 13 && event.shiftKey) {
+    // $('.todo-card').html("<br><br>");
+    $('textarea').autoResize({
+      animate: {
+        enabled: true,
+        duration: 'fast',
+        // complete: function() {
+        //     // Do something
+        // },
+        // step: function(now, fx) {
+        //     // Do something else
+        // }
+      },
+      maxHeight: '500px'
+    });
+  }
+
+  if (event.keyCode === 13 && !event.shiftKey) {
 
     // Cancel the default action, if needed
     event.preventDefault();
@@ -218,3 +247,6 @@ $('.add-button').click(function () {
   // NOTES: Change to jquery.
   $('.add-task').val('')
 });
+
+// invert check mark color
+// preserve line breaks <br> insert

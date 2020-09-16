@@ -8,6 +8,12 @@ html {
   font-size: 15px;
 }
 
+@font-face {
+  font-family: SimplonNorm;
+  src: url(SimplonNorm-Bold-WebXL.woff2);
+  font-weight: bold;
+}
+
 h1 {
   font-family: 'Archivo', sans-serif;
   /* font-family: 'Nunito', sans-serif; */
@@ -19,8 +25,8 @@ h1 {
 h2 {
   /* font-family: 'Roboto', sans-serif; */
   /* font-family: 'Archivo', sans-serif; */
-  font-family: 'Nunito', sans-serif;
-  font-size: 1rem;
+  font-family: 'SimplonNorm','Nunito', sans-serif;
+  font-size: 1.5rem;
   font-weight: 700;
 }
 
@@ -58,7 +64,7 @@ body:not(.user-is-tabbing) textarea:focus {
 }
 
 .logo {
-  width: 200px;
+  width: 130px;
 }
 
 .page-top {
@@ -94,8 +100,8 @@ body:not(.user-is-tabbing) textarea:focus {
 .to-do-title{
   display: flex;
   color: white;
-  background-image: linear-gradient(to right, #0d5297, #00a24f);
-  /* background-color: rgba(0, 0, 0, 0.3); */
+  /* background-image: linear-gradient(to right, #0d5297, #00a24f); */
+  background-color: #00a24f;
   width: 100%;
   height: 3rem;
   align-items: center;
@@ -203,7 +209,7 @@ textarea {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  border:  #0d5297 1px solid;
+  border: #00a24f 1px solid;
   padding: 2%;
   border-radius: 5px;
   padding: 0;

@@ -34,6 +34,7 @@ h3 {
   /* font-family: 'Roboto', sans-serif; */
   /* font-family: 'Archivo', sans-serif; */
   font-family: 'Nunito', sans-serif;
+  /* font-family: 'SimplonNorm','Nunito', sans-serif; */
   font-size: 1.5rem;
   font-weight: 300;
   color: #909090;
@@ -87,13 +88,13 @@ body:not(.user-is-tabbing) textarea:focus {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  width: 100%;
-  /* margin: auto; */
+  width: 90%;
+  margin: auto;
   padding: 2%;
 }
 
 .add-task {
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid black;
   /* padding-bottom: 5px; */
 }
 
@@ -131,6 +132,7 @@ textarea {
 
 .add-button {
   background-color: white;
+  font-family: SimplonNorm;
   font-size: 1.7rem;
   /* font-weight: 700; */
   width: 30px;
@@ -177,7 +179,7 @@ textarea {
 }
 
 .fa-trash-alt:hover{
-  color: #0d5297;
+  color: rgb(255, 0, 0);
 }
 
 #type-field-title {
@@ -209,9 +211,9 @@ textarea {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  border: #00a24f 1px solid;
+  border: black 2px solid;
   padding: 2%;
-  border-radius: 5px;
+  border-radius: 7px;
   padding: 0;
   margin: auto;
 }
@@ -226,6 +228,7 @@ textarea {
 
 .to-do-title {
   border-radius: 4px 4px 0 0;
+  border-bottom: black solid 2px;
 }
 
 .type-header {
@@ -243,7 +246,7 @@ textarea {
 @media only screen and (max-width: 560px) {
 
   h3 {
-    font-size: 1rem;
+    font-size: 1.5rem;
     padding: 4rem;
     text-align: center;
   }
@@ -265,6 +268,10 @@ textarea {
   .to-do-title {
     padding-left: 1.5rem;
   }
+
+  .page-container {
+    width: 90%;
+  }
 }
 
 
@@ -272,7 +279,7 @@ textarea {
 @media only screen and (min-width: 560px) and (max-width: 900px) {
 
   h3 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     padding: 4rem;
     text-align: center;
   }
